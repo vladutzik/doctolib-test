@@ -24,6 +24,8 @@
  > **This test failed!** - because the order of hours didn't match in the `availability` Object.
  > In order to fix that I decided to `order` the query from database by `starts_at` field. This solution fixed the `getAvailability` function.
 
+## API Challenge
+Please checkout [https://vladutzik.github.io/doctolib-api-test](https://vladutzik.github.io/doctolib-api-test)
 
  ### TO DO:
  1. Write tests to check if reccuring is working correct for `appointment` events.
