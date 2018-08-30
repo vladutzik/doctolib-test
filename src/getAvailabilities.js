@@ -4,6 +4,7 @@ import knex from "knexClient";
 const getEvents = (queryDate) => knex
   .select("kind", "starts_at", "ends_at", "weekly_recurring")
   .from("events")
+  .orderBy('starts_at', 'asc')
   .where(function() {
     this.where("weekly_recurring", true).orWhere("ends_at", ">", +queryDate);
   });

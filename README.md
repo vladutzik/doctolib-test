@@ -16,4 +16,14 @@
 > ###### Now all initial tests are green, that's just awesome!
 
 
- 
+ ##### 4. Writing additional tests.
+
+ > First I choose to test if function returns `availabiliy` for any ammount off days required.
+ > Afterwords I choose to test if `weekly_recurring` events are working fine.
+ > Third itteration of ftest was for checking how the function will behave with mixed events. There is an use case when I added an event with opening hours `13 - 18`, and then added one more event, on the same date, but with opening hours `8 - 11`.
+ > **This test failed!** - because the order of hours didn't match in the `availability` Object.
+ > In order to fix that I decided to `order` the query from database by `starts_at` field. This solution fixed the `getAvailability` function.
+
+
+ ### TO DO:
+ 1. Write tests to check if reccuring is working correct for `appointment` events.
