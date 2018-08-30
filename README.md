@@ -1,26 +1,15 @@
-# Doctolib Test
+## Steps of implementation 
 
-## Instructions
-This code provides an algorithm that checks the availabilities of an agenda depending of
-the events attached to it. The main method has a start date for input and is looking for
-the availabilities of the next 7 days.
+##### 1. Fixed syntax erros in test.
+##### 2. Analyzed failed test cases.
 
-They are two kinds of events:
- * `opening`, are the openings for a specific day and they can be recurring week by week.
- * `appointment`, times when the doctor is already booked.
+> While analyzing the faild test cases, I started to analyze the code implementation.
+>  So i spotted some interesting facts:
+>  1. The key used for the `Availability` Object, is the day of week, which will make imposible to query availability for more than 7 days (in current implementation). Because if we query the 8th day, then it will set the availability on the 1st day slot. 
+>  2. The function that is itterationg through events and poopulates the `Availability` Object works in a wrong way. When an event of kind `appointment` is queryed then it filters already inserted `opening hours`, so if an `appointment` event is inserted before `opening` event (like in the test case 2) then it will try to filter an empty array of `opening hours`, and then will process the `opening` event, that will populate the availability with all `opening hours`.
+>     ##### I've decided to redesign the entire implementation. 
 
 
-At any moment, feel free to refactor or add unit tests. Please make a commit after each
-step and return us a git bare repo.
 
-Unfortunately, the code is broken. Here is your mission:
- * **Step 1**: Fix the tests.
- * **Step 2**: Optimize and refactor if needed.
- * **Step 3**: Allow the function to return availabilities on as many days as requested:
-```js
-function getAvailabilities(date, numberOfDays = 7) {}
-```
 
-## How to run
- * Install [node](https://nodejs.org/en/) and [yarn](https://yarnpkg.com/en/)
- * Run `yarn && yarn test`, focus on `src` folder, you are ready!
+ 
